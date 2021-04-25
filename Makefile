@@ -277,3 +277,19 @@ blocks:
     				generatetoaddress $(n)
 
 .PHONY: build seednode
+
+grpc-go:
+	protoc \
+		--proto_path=./proto/src/main/proto \
+		--go_out=. \
+		--go_opt=paths=source_relative \
+		--go-grpc_out=. \
+		--go-grpc_opt=paths=source_relative \
+			./proto/src/main/proto/grpc.proto
+	protoc \
+		--proto_path=./proto/src/main/proto \
+		--go_out=. \
+		--go_opt=paths=source_relative \
+		--go-grpc_out=. \
+		--go-grpc_opt=paths=source_relative \
+			./proto/src/main/proto/pb.proto
